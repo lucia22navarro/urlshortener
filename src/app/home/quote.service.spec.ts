@@ -2,19 +2,19 @@ import { Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { QuoteService } from './quote.service';
+import { ShortenerService } from './shortener.service';
 
 describe('QuoteService', () => {
-  let quoteService: QuoteService;
+  let quoteService: ShortenerService;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [QuoteService],
+      providers: [ShortenerService],
     });
 
-    quoteService = TestBed.inject(QuoteService);
+    quoteService = TestBed.inject(ShortenerService);
     httpMock = TestBed.inject(HttpTestingController as Type<HttpTestingController>);
   });
 
