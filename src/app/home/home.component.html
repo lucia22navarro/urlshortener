@@ -12,13 +12,13 @@
     <img src="assets/descarga.png" alt="Image" style="width: 350px; height: 250px" />
     <ion-card-content>
       <ion-card-title>
-        <span translate>Bienvenido a URLShortener</span>
+        <span translate>Welcome to URLShortener</span>
       </ion-card-title>
-      <h2>En esta página puedes acortar URLs largas de una manera fácil y sencilla (¡y gratuita!)</h2>
+      <h2 translate>In this page you can short long URLs in an easy way (and free!)</h2>
       <br /><br />
 
       <ion-item>
-        <ion-label>Introduce aquí tu enlace</ion-label>
+        <ion-label translate>Shorten your URL</ion-label>
         <ion-card>
           <ion-item>
             <ion-input placeholder=" http://google.com" [(ngModel)]="inputURL"></ion-input>
@@ -31,15 +31,15 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card *ngFor="let card of URLCards">
+  <ion-card *ngFor="let card of URLCards.reverse()">
     <ion-card-header>
-      <ion-title>
+      <ion-title translate>
         Link shorted: <a href="{{ card.short_url }}">{{ card.short_url }}</a>
       </ion-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-item><b>Redirect url: </b> {{ card.long_url }}</ion-item>
-      <ion-item><b>Creation date:</b> {{ card.created_at }}</ion-item>
+      <ion-item translate><b>Redirect url: </b> {{ card.long_url }}</ion-item>
+      <ion-item translate><b>Creation date: </b> {{ card.created_at * 1000 | date: 'dd/MM/yyyy hh:mm' }}</ion-item>
     </ion-card-content>
   </ion-card>
 </ion-content>

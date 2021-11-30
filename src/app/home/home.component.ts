@@ -7,7 +7,7 @@ import { ShortenerService } from './shortener.service';
 interface URLCard {
   long_url: string;
   short_url: string;
-  created_at: string;
+  created_at: number;
 }
 
 @Component({
@@ -46,8 +46,9 @@ export class HomeComponent implements OnInit {
       this.URLCards.push({
         long_url: result.url,
         short_url: environment.serverUrl + '/' + result.code,
-        created_at: new Date(result.created_at).toUTCString(),
+        created_at: result.created_at,
       });
+      this.inputURL = '';
     });
   }
 }

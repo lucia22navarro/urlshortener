@@ -11,5 +11,12 @@
   "Notifications": "Notificaciones",
   "Preferences": "Preferencias",
   "Account": "Cuenta",
-  "Version": "Versión"
+  "Version": "Versión",
+  "Profile": "Perfil",
+  "Welcome to URLShortener": "Bienvenido a URLShortener",
+  "Shorten your URL": "Introduce aquí tu enlace",
+  "In this page you can short long URLs in an easy way (and free!)": "En esta página puedes acortar URLs largas de una manera fácil y sencilla (¡y gratuita!)",
+  "Link shorted": "Link acortado",
+  "Redirect url": "Redirección",
+  "Creation date": "Fecha de creación"
 }
