@@ -11,5 +11,12 @@
   "Notifications": "Notifications",
   "Preferences": "Preferences",
   "Account": "Account",
-  "Version": "Version"
+  "Version": "Version",
+  "Profile": "Profile",
+  "Welcome to URLShortener": "Welcome to URLShortener",
+  "Paste your URL here": "Paste your URL here",
+  "In this page you can shorten long URLs in an easy way (and free!)": "In this page you can shorten long URLs in an easy way (and free!)",
+  "Link shorted": "Link shorted",
+  "Redirect url": "Redirect url",
+  "Creation date": "Creation date"
 }

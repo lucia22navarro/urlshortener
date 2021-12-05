@@ -9,6 +9,7 @@ import { IonicModule } from '@ionic/angular';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { ClipboardModule } from 'ngx-clipboard';
 
 import { environment } from '@env/environment';
 import { RouteReusableStrategy, ApiPrefixInterceptor, ErrorHandlerInterceptor, SharedModule } from '@shared';
@@ -32,6 +33,7 @@ import { AppRoutingModule } from './app-routing.module';
     HomeModule,
     SettingsModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
+    ClipboardModule,
   ],
   declarations: [AppComponent],
   providers: [

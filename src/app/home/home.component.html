@@ -3,43 +3,49 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title><span translate>Home</span></ion-title>
+    <ion-title><span translate>URLShortener</span></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card class="ion-text-center">
-    <img src="assets/descarga.png" alt="Image" style="width: 350px; height: 250px" />
-    <ion-card-content>
-      <ion-card-title>
-        <span translate>Welcome to URLShortener</span>
-      </ion-card-title>
-      <h2 translate>In this page you can short long URLs in an easy way (and free!)</h2>
-      <br /><br />
+  <div class="container-fluid">
+    <ion-card class="ion-text-center" [ngStyle]="{ backgroundImage: 'url(assets/space-5654794_1280.png)' }">
+      <img src="assets/Imagen1.png" alt="Image" style="width: 400px; height: 275px" />
+      <ion-card-content>
+        <ion-card-title>
+          <span style="background-color: aliceblue" translate>Welcome to URLShortener</span><br /><br />
+          <span style="background-color: aliceblue" translate
+            >In this page you can shorten long URLs in an easy way (and free!)</span
+          >
+        </ion-card-title>
+        <br /><br />
+        <ion-item>
+          <ion-label style="background-color: aliceblue" translate>Paste your URL here</ion-label>
+          <ion-card style="width: max-content; background-color: transparent">
+            <ion-item lines="full">
+              <ion-input pattern="url" placeholder=" http://google.com" [(ngModel)]="inputURL"></ion-input>
+              <ion-button fill="outline" slot="end" (click)="shortURL(inputURL)">
+                <ion-icon name="cut"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-card>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
 
-      <ion-item>
-        <ion-label translate>Shorten your URL</ion-label>
-        <ion-card>
-          <ion-item>
-            <ion-input placeholder=" http://google.com" [(ngModel)]="inputURL"></ion-input>
-            <ion-button fill="outline" slot="end" (click)="shortURL(inputURL)">
-              <ion-icon name="cut"></ion-icon>
-            </ion-button>
-          </ion-item>
-        </ion-card>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card *ngFor="let card of URLCards.reverse()">
-    <ion-card-header>
-      <ion-title translate>
-        Link shorted: <a href="{{ card.short_url }}">{{ card.short_url }}</a>
-      </ion-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item translate><b>Redirect url: </b> {{ card.long_url }}</ion-item>
-      <ion-item translate><b>Creation date: </b> {{ card.created_at * 1000 | date: 'dd/MM/yyyy hh:mm' }}</ion-item>
-    </ion-card-content>
-  </ion-card>
+    <ion-card *ngFor="let card of URLCards.reverse()">
+      <ion-card-header>
+        <ion-title translate>
+          Link shorted: <a href="{{ card.short_url }}">{{ card.short_url }}</a>
+          <button>
+            <ion-icon name="copy"></ion-icon>
+          </button>
+        </ion-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item translate><b>Redirect url: </b> {{ card.long_url }}</ion-item>
+        <ion-item translate><b>Creation date: </b> {{ card.created_at * 1000 | date: 'dd/MM/yyyy hh:mm' }}</ion-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

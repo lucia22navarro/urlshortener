@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '@env/environment';
 import { finalize } from 'rxjs/operators';
-
 import { ShortenerService } from './shortener.service';
 
 interface URLCard {
@@ -50,5 +49,10 @@ export class HomeComponent implements OnInit {
       });
       this.inputURL = '';
     });
+  }
+
+  copyURL(url: string) {
+    console.log('Copied');
+    // this.clipboardService.copyFromContent(url)
   }
 }
