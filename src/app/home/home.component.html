@@ -3,7 +3,8 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title><span translate>URLShortener</span></ion-title>
+    <ion-title style="float: left"><span>URLShortener</span></ion-title>
+    <app-language-selector style="float: right" type="item"></app-language-selector>
   </ion-toolbar>
 </ion-header>
 
@@ -13,38 +14,52 @@
       <img src="assets/Imagen1.png" alt="Image" style="width: 400px; height: 275px" />
       <ion-card-content>
         <ion-card-title>
-          <span style="background-color: aliceblue" translate>Welcome to URLShortener</span><br /><br />
+          <span style="background-color: aliceblue; font-style: 'Montserrat', sans-serif" translate
+            >Welcome to URLShortener</span
+          ><br /><br />
           <span style="background-color: aliceblue" translate
             >In this page you can shorten long URLs in an easy way (and free!)</span
           >
         </ion-card-title>
         <br /><br />
-        <ion-item>
+        <ion-item color="transparent">
           <ion-label style="background-color: aliceblue" translate>Paste your URL here</ion-label>
           <ion-card style="width: max-content; background-color: transparent">
             <ion-item lines="full">
-              <ion-input pattern="url" placeholder=" http://google.com" [(ngModel)]="inputURL"></ion-input>
+              <ion-input
+                style="width: 700px; height: 50px; float: left"
+                placeholder=" http://google.com"
+                [(ngModel)]="inputURL"
+              ></ion-input>
               <ion-button fill="outline" slot="end" (click)="shortURL(inputURL)">
                 <ion-icon name="cut"></ion-icon>
               </ion-button>
             </ion-item>
           </ion-card>
         </ion-item>
+
+        <ion-item color="transparent">
+          <ion-searchbar placeholder="Search an URL" animated="true" type="search" translate></ion-searchbar>
+          <ion-button color="primary" (click)="orderDates()">Date</ion-button>
+        </ion-item>
       </ion-card-content>
     </ion-card>
 
     <ion-card *ngFor="let card of URLCards.reverse()">
-      <ion-card-header>
-        <ion-title translate>
-          Link shorted: <a href="{{ card.short_url }}">{{ card.short_url }}</a>
-          <button>
-            <ion-icon name="copy"></ion-icon>
-          </button>
-        </ion-title>
+      <ion-card-header color="medium">
+        <ion-title>{{ card.title }}</ion-title>
       </ion-card-header>
       <ion-card-content>
+        <ion-item translate>
+          <a href="{{ card.short_url }}" target="_blank" (click)="updateCounter(card)">{{ card.short_url }}</a>
+          &nbsp;&nbsp;
+          <button ion-button (click)="copyForClipboard($event, card.short_url)">
+            <ion-icon name="copy"></ion-icon>
+          </button>
+        </ion-item>
         <ion-item translate><b>Redirect url: </b> {{ card.long_url }}</ion-item>
         <ion-item translate><b>Creation date: </b> {{ card.created_at * 1000 | date: 'dd/MM/yyyy hh:mm' }}</ion-item>
+        <ion-item translate><b>Times accessed: </b> {{ card.counter }}</ion-item>
       </ion-card-content>
     </ion-card>
   </div>
