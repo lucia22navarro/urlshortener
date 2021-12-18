@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { environment } from '@env/environment';
 import { finalize } from 'rxjs/operators';
 import { ShortenerService } from './shortener.service';
 import { ToastController } from '@ionic/angular';
+import { ThrowStmt } from '@angular/compiler';
 
 interface URLCard {
   title: string;
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
   quote: string | undefined;
   isLoading = false;
   inputURL: any = '';
+  searchword: any = '';
   URLCards: URLCard[] = [];
 
   constructor(private shortenerService: ShortenerService, public toastCtrl: ToastController) {}
@@ -38,6 +40,21 @@ export class HomeComponent implements OnInit {
       .subscribe((quote: string) => {
         this.quote = quote;
       });*/
+  }
+
+  searchThis(searchword: string) {
+    var aux: URLCard[] = [];
+    var card: any;
+
+    if (searchword) {
+      for (card in this.URLCards) {
+        if (card.title.includes(searchword)) {
+          aux.push(card);
+        }
+      }
+      return aux;
+    }
+    return this.URLCards;
   }
 
   shortURL(url: string) {
@@ -76,7 +93,6 @@ export class HomeComponent implements OnInit {
         aux.counter++;
       }
     }
-    return this.URLCards;
   }
 
   public copyForClipboard(event: MouseEvent, short_url: string): void {
@@ -94,6 +110,7 @@ export class HomeComponent implements OnInit {
     document.execCommand('copy');
     document.removeEventListener('copy', listener, false);
   }
+
   showToastMsg(message: string) {
     this.toastCtrl
       .create({

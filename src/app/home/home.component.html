@@ -39,8 +39,10 @@
         </ion-item>
 
         <ion-item color="transparent">
-          <ion-searchbar placeholder="Search an URL" animated="true" type="search" translate></ion-searchbar>
-          <ion-button color="primary" (click)="orderDates()">Date</ion-button>
+          <!--
+          <ion-searchbar placeholder="Search an URL" animated="true" [(ngModel)]="searchword" (input)="searchThis(searchword)" translate></ion-searchbar>
+          -->
+          <ion-button color="primary" (click)="orderDates()">Order by date</ion-button>
         </ion-item>
       </ion-card-content>
     </ion-card>
